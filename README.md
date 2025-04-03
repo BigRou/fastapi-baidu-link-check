@@ -35,7 +35,7 @@
 
 1. 克隆项目
 ```bash
-git clone https://github.com/your-repo/fastapi-baidu-link-check.git
+git clone https://github.com/BigRou/fastapi-baidu-link-check.git
 cd fastapi-baidu-link-check
 ```
 
