@@ -16,7 +16,7 @@ class BaiduLinkService:
     @staticmethod
     def check_link_validity(link: str) -> Optional[bool]:
         """
-        检测百度网盘链接有效性
+        检测单个百度网盘链接有效性
         返回:
             True - 链接有效
             False - 链接无效
@@ -40,3 +40,21 @@ class BaiduLinkService:
             
         except Exception:
             return None
+            
+    @staticmethod
+    def batch_check_links(links: list[str]) -> list[dict]:
+        """
+        批量检测百度网盘链接有效性
+        返回:
+            包含每个链接检测结果的列表
+        """
+        results = []
+        for link in links:
+            result = BaiduLinkService.check_link_validity(link)
+            if result is None:
+                results.append({"link": link, "valid": None, "message": "检测错误"})
+            elif result is False:
+                results.append({"link": link, "valid": False, "message": "链接无效"})
+            else:
+                results.append({"link": link, "valid": True, "message": "链接有效"})
+        return results
